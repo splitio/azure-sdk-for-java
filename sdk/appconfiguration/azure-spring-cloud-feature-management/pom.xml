@@ -1,19 +1,40 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <parent>
     <groupId>com.azure</groupId>
     <artifactId>azure-client-sdk-parent</artifactId>
-    <version>1.7.0</version> <!-- {x-version-update;com.azure:azure-client-sdk-parent;current} -->
+    <version>1.7.0</version>
     <relativePath>../../parents/azure-client-sdk-parent</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.azure.spring</groupId>
+  <groupId>io.split.integrations.azure</groupId>
   <artifactId>azure-spring-cloud-feature-management</artifactId>
-  <version>2.4.0-beta.1</version> <!-- {x-version-update;com.azure.spring:azure-spring-cloud-feature-management;current} -->
+  <version>2.3.0</version> <!-- {x-version-update;com.azure.spring:azure-spring-cloud-feature-management;current} -->
   <name>Azure Spring Cloud Feature Management</name>
   <description>Adds Feature Management into Spring</description>
+
+  <!-- Added by Split -->
+  <url>http://www.split.io</url>
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:git@github.com:splitio/azure-sdk-for-java.git</connection>
+    <developerConnection>scm:git@github.com:splitio/azure-sdk-for-java.git</developerConnection>
+    <url>git@github.com:splitio/azure-sdk-for-java.git</url>
+  </scm>
+  <developers>
+    <developer>
+      <name>Josh Sirota</name>
+      <email>josh.sirota@split.io</email>
+    </developer>
+  </developers>
 
   <properties>
     <checkstyle.skip>true</checkstyle.skip>
@@ -71,6 +92,50 @@
             </bannedDependencies>
           </rules>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.3</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>false</autoReleaseAfterClose>
+          <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.4</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <!-- attached to Maven test phase -->
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

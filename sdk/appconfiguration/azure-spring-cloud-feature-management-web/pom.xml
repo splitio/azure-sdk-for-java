@@ -9,11 +9,31 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.azure.spring</groupId>
+  <groupId>io.split.integrations.azure</groupId>
   <artifactId>azure-spring-cloud-feature-management-web</artifactId>
-  <version>2.4.0-beta.1</version> <!-- {x-version-update;com.azure.spring:azure-spring-cloud-feature-management-web;current} -->
+  <version>2.3.0</version>
   <name>Azure Spring Cloud Feature Management Web</name>
   <description>Adds Feature Management into Spring Web</description>
+
+  <!-- Added by Split -->
+  <url>http://www.split.io</url>
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:git@github.com:splitio/azure-sdk-for-java.git</connection>
+    <developerConnection>scm:git@github.com:splitio/azure-sdk-for-java.git</developerConnection>
+    <url>git@github.com:splitio/azure-sdk-for-java.git</url>
+  </scm>
+  <developers>
+    <developer>
+      <name>Josh Sirota</name>
+      <email>josh.sirota@split.io</email>
+    </developer>
+  </developers>
 
   <properties>
     <checkstyle.skip>true</checkstyle.skip>
@@ -43,9 +63,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.azure.spring</groupId>
+      <groupId>io.split.integrations.azure</groupId>
       <artifactId>azure-spring-cloud-feature-management</artifactId>
-      <version>2.4.0-beta.1</version> <!-- {x-version-update;com.azure.spring:azure-spring-cloud-feature-management;current} -->
+      <version>2.3.0</version>
     </dependency>
     <!-- Added this dependency to include necessary annotations used by reactor core.
     Without this dependency, javadoc throws a warning as it cannot find enum When.MAYBE

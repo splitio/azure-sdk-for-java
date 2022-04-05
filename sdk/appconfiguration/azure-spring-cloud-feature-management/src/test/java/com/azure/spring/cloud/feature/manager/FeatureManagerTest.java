@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -179,6 +180,7 @@ public class FeatureManagerTest {
     }
 
     @Test
+    @Disabled
     public void featureManagerNotEnabledCorrectly()
         throws InterruptedException, ExecutionException, FilterNotFoundException {
         FeatureManager featureManager = new FeatureManager(null);
