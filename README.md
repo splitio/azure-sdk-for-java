@@ -5,6 +5,15 @@
 
 This repository is for active development of the Azure SDK for Java. For consumers of the SDK we recommend visiting our [public developer docs](https://docs.microsoft.com/java/azure/) or our versioned [developer docs](https://azure.github.io/azure-sdk-for-java).
 
+## Split Fork
+
+This repo is a Split fork of the Azure repo. We use it to build:
+- A custom version of `com.azure.spring:azure-spring-cloud-feature-management`, which adds an "Impression Listener" to that feature. It looks for a Spring Boot bean which should be called each time that a feature flag is evaluated.
+
+- A re-signed version of `com.azure.spring:azure-spring-cloud-feature-management-web`. This 2nd package depends on the former package. So for customers who want to integrate Azure's Feature Management feature with Split and are using the `-web` version of the Feature Manager library, they would need to use this fork in order to get the impressions listener functionality that's in the depended-upon library.
+
+To build these items, run `mvn clean package` in the `sdk/appconfiguration/<package-name>` directory. Signing and uploading to Maven Central can be done by following the instructions in `https://splitio.atlassian.net/wiki/spaces/EN/pages/200966255/How+to+Release+JAVA+SDK`.
+
 ## Getting started
 
 To get started with a specific service library, see the **README.md** file located in the library's project folder. You can find service libraries in the `/sdk` directory. For a list of all the services we support access our [list of all existing libraries](https://azure.github.io/azure-sdk/releases/latest/all/java.html).
